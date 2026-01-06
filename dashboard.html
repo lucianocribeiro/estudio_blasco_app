@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio Blasco - Gestión Contable</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="dashboard">
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="client-header">
+        <div class="client-name">Estudio Blasco</div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-group">
+          <div class="nav-title">Cruces de Información</div>
+          <a href="#" class="nav-item" data-action="coming-soon">Mis Retenciones</a>
+          <a href="#" class="nav-item" data-action="coming-soon">Mis Comprobantes</a>
+          <a
+            href="https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b"
+            target="_blank"
+            rel="noreferrer"
+            class="nav-item"
+          >
+            Retenciones y Comprobantes (Comb.)
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-title">Liquidador IVA</div>
+          <a
+            href="https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e"
+            target="_blank"
+            rel="noreferrer"
+            class="nav-item"
+          >
+            Liquidación
+          </a>
+          <a
+            href="https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl"
+            target="_blank"
+            rel="noreferrer"
+            class="nav-sub-item"
+          >
+            Sheets
+          </a>
+          <a
+            href="https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13"
+            target="_blank"
+            rel="noreferrer"
+            class="nav-sub-item"
+          >
+            Validación
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-title">Impuestos Provinciales</div>
+          <a href="#" class="nav-item" data-action="coming-soon">Liquidador IIBB</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <img src="public/agencia-kairos-logo.svg" alt="Agencia Kairos">
+        <button class="logout-button" id="logoutButton">Cerrar sesión</button>
+      </header>
+
+      <div class="content-body">
+        <h1>
+          Bienvenido, <span style="color: var(--accent);">Estudio Blasco</span>
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 16px; margin-top: 10px;">
+          Gestión inteligente de flujos contables y auditoría.
+        </p>
+
+        <div class="action-grid">
+          <a
+            href="https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b"
+            target="_blank"
+            rel="noreferrer"
+            class="action-card"
+          >
+            <div class="icon-box">📊</div>
+            <h3>Cruces de Información</h3>
+            <p>Auditoría cruzada de comprobantes y retenciones.</p>
+          </a>
+          <a
+            href="https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e"
+            target="_blank"
+            rel="noreferrer"
+            class="action-card"
+          >
+            <div class="icon-box">📉</div>
+            <h3>Liquidador IVA</h3>
+            <p>Cierre mensual y reportes de auditoría IVA.</p>
+          </a>
+          <div class="action-card" data-action="coming-soon">
+            <div class="icon-box">📍</div>
+            <h3>Impuestos Provinciales</h3>
+            <p>Liquidación de IIBB y tasas locales.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="proximamenteToast" class="toast">
+    Proximamente
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

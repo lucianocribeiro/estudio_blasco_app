@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio Blasco - Ingreso</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-body" data-page="login">
+  <div class="login-card">
+    <img src="public/agencia-kairos-logo.svg" alt="Agencia Kairos">
+    <h2>Estudio Blasco</h2>
+    <p>Accede a la plataforma de gestión contable.</p>
+    <div id="loginError" class="login-error"></div>
+    <form id="loginForm" autocomplete="off">
+      <div>
+        <label for="username">Usuario</label>
+        <input id="username" name="username" type="text" placeholder="Tu usuario" required>
+      </div>
+      <div>
+        <label for="password">Contraseña</label>
+        <input id="password" name="password" type="password" placeholder="Tu contraseña" required>
+      </div>
+      <button type="submit">Ingresar</button>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
