@@ -227,12 +227,16 @@ p {
 }
 
 /* Login */
-.login-body {
+.login-view {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
+}
+
+.hidden {
+  display: none;
 }
 
 .login-card {

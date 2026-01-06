@@ -1,6 +1,6 @@
 const SESSION_KEY = 'blasco_session';
-const LOGIN_URL = 'index.html';
-const DASHBOARD_URL = 'dashboard.html';
+const LOGIN_HASH = '#/login';
+const DASHBOARD_HASH = '#/dashboard';
 
 const CREDENTIALS = {
   username: 'BlascoAI',
@@ -11,15 +11,9 @@ function isAuthenticated() {
   return sessionStorage.getItem(SESSION_KEY) === 'active';
 }
 
-function redirectIfAuthenticated() {
-  if (isAuthenticated()) {
-    window.location.replace(DASHBOARD_URL);
-  }
-}
-
-function protectDashboard() {
-  if (!isAuthenticated()) {
-    window.location.replace(LOGIN_URL);
+function setHash(hash) {
+  if (window.location.hash !== hash) {
+    window.location.hash = hash;
   }
 }
 
@@ -55,7 +49,7 @@ function bindLogout() {
 
   logoutButton.addEventListener('click', () => {
     sessionStorage.removeItem(SESSION_KEY);
-    window.location.replace(LOGIN_URL);
+    setHash(LOGIN_HASH);
   });
 }
 
@@ -75,7 +69,10 @@ function bindLoginForm() {
 
     if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
       sessionStorage.setItem(SESSION_KEY, 'active');
-      window.location.replace(DASHBOARD_URL);
+      if (errorEl) {
+        errorEl.classList.remove('show');
+      }
+      setHash(DASHBOARD_HASH);
       return;
     }
 
@@ -86,19 +83,48 @@ function bindLoginForm() {
   });
 }
 
+function showView(view) {
+  const loginSection = document.getElementById('loginSection');
+  const dashboardSection = document.getElementById('dashboardSection');
+
+  if (!loginSection || !dashboardSection) {
+    return;
+  }
+
+  loginSection.classList.toggle('hidden', view !== 'login');
+  dashboardSection.classList.toggle('hidden', view !== 'dashboard');
+}
+
+function handleRoute() {
+  const hash = window.location.hash || '';
+  const route = hash.replace('#/', '');
+
+  if (route === 'dashboard') {
+    if (!isAuthenticated()) {
+      setHash(LOGIN_HASH);
+      showView('login');
+      return;
+    }
+    showView('dashboard');
+    return;
+  }
+
+  if (isAuthenticated()) {
+    setHash(DASHBOARD_HASH);
+    showView('dashboard');
+    return;
+  }
+
+  setHash(LOGIN_HASH);
+  showView('login');
+}
+
 function init() {
-  const page = document.body.dataset.page;
-
-  if (page === 'login') {
-    redirectIfAuthenticated();
-    bindLoginForm();
-  }
-
-  if (page === 'dashboard') {
-    protectDashboard();
-    bindComingSoon();
-    bindLogout();
-  }
+  bindLoginForm();
+  bindComingSoon();
+  bindLogout();
+  handleRoute();
+  window.addEventListener('hashchange', handleRoute);
 }
 
 document.addEventListener('DOMContentLoaded', init);
