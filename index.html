@@ -112,40 +112,98 @@
       </header>
 
       <div class="content-body">
-        <h1>
-          Bienvenido, <span style="color: var(--accent);">Estudio Blasco</span>
-        </h1>
-        <p style="color: var(--text-secondary); font-size: 16px; margin-top: 10px;">
-          Gestión inteligente de flujos contables y auditoría.
-        </p>
+        <section id="dashboardView">
+          <h1>
+            Bienvenido, <span style="color: var(--accent);">Estudio Blasco</span>
+          </h1>
+          <p style="color: var(--text-secondary); font-size: 16px; margin-top: 10px;">
+            Gestión inteligente de flujos contables y auditoría.
+          </p>
 
-        <div class="action-grid">
-          <a
-            href="https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b"
-            target="_blank"
-            rel="noreferrer"
-            class="action-card"
-          >
-            <div class="icon-box">📊</div>
-            <h3>Cruces de Información</h3>
-            <p>Auditoría cruzada de comprobantes y retenciones.</p>
-          </a>
-          <a
-            href="https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e"
-            target="_blank"
-            rel="noreferrer"
-            class="action-card"
-          >
-            <div class="icon-box">📉</div>
-            <h3>Liquidador IVA</h3>
-            <p>Cierre mensual y reportes de auditoría IVA.</p>
-          </a>
-          <div class="action-card" data-action="coming-soon">
-            <div class="icon-box">📍</div>
-            <h3>Impuestos Provinciales</h3>
-            <p>Liquidación de IIBB y tasas locales.</p>
+          <div class="action-grid">
+            <a
+              href="https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b"
+              target="_blank"
+              rel="noreferrer"
+              class="action-card"
+            >
+              <div class="icon-box">📊</div>
+              <h3>Cruces de Información</h3>
+              <p>Auditoría cruzada de comprobantes y retenciones.</p>
+            </a>
+            <a
+              href="https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e"
+              target="_blank"
+              rel="noreferrer"
+              class="action-card"
+            >
+              <div class="icon-box">📉</div>
+              <h3>Liquidador IVA</h3>
+              <p>Cierre mensual y reportes de auditoría IVA.</p>
+            </a>
+            <div class="action-card" data-action="coming-soon">
+              <div class="icon-box">📍</div>
+              <h3>Impuestos Provinciales</h3>
+              <p>Liquidación de IIBB y tasas locales.</p>
+            </div>
+            <a href="#/testing" class="action-card">
+              <div class="icon-box">🧪</div>
+              <h3>Pruebas</h3>
+              <p>Registro interno y seguimiento de testing.</p>
+            </a>
           </div>
-        </div>
+        </section>
+
+        <section id="testingView" class="hidden">
+          <div class="testing-header">
+            <div>
+              <h1>Pruebas</h1>
+              <p style="color: var(--text-secondary); font-size: 16px; margin-top: 10px;">
+                Carga y seguimiento de pruebas internas.
+              </p>
+            </div>
+            <button class="secondary-button" id="backToDashboard" type="button">
+              Volver al panel
+            </button>
+          </div>
+
+          <form class="testing-form" autocomplete="off">
+            <div class="testing-grid">
+              <div class="form-field">
+                <label for="testingName">Nombre de la prueba</label>
+                <input id="testingName" name="testingName" type="text" placeholder="Ej: Prueba de IVA" required>
+              </div>
+              <div class="form-field">
+                <label for="testingLink">Enlace del formulario</label>
+                <input
+                  id="testingLink"
+                  name="testingLink"
+                  type="url"
+                  placeholder="https://..."
+                  required
+                >
+              </div>
+              <div class="form-field">
+                <label for="testingStatus">Estado de la prueba</label>
+                <select id="testingStatus" name="testingStatus" required>
+                  <option value="" disabled selected>Selecciona un estado</option>
+                  <option value="pendiente">Pendiente</option>
+                  <option value="en-progreso">En progreso</option>
+                  <option value="completada">Completada</option>
+                </select>
+              </div>
+              <div class="form-field field-span-2">
+                <label for="testingComments">Comentarios</label>
+                <textarea
+                  id="testingComments"
+                  name="testingComments"
+                  placeholder="Notas adicionales sobre la prueba"
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+          </form>
+        </section>
       </div>
     </main>
   </div>

@@ -1,6 +1,7 @@
 const SESSION_KEY = 'blasco_session';
 const LOGIN_HASH = '#/login';
 const DASHBOARD_HASH = '#/dashboard';
+const TESTING_HASH = '#/testing';
 
 const CREDENTIALS = {
   username: 'BlascoAI',
@@ -53,6 +54,17 @@ function bindLogout() {
   });
 }
 
+function bindDashboardNavigation() {
+  const backButton = document.getElementById('backToDashboard');
+  if (!backButton) {
+    return;
+  }
+
+  backButton.addEventListener('click', () => {
+    setHash(DASHBOARD_HASH);
+  });
+}
+
 function bindLoginForm() {
   const loginForm = document.getElementById('loginForm');
   if (!loginForm) {
@@ -95,6 +107,18 @@ function showView(view) {
   dashboardSection.classList.toggle('hidden', view !== 'dashboard');
 }
 
+function showDashboardPage(page) {
+  const dashboardView = document.getElementById('dashboardView');
+  const testingView = document.getElementById('testingView');
+
+  if (!dashboardView || !testingView) {
+    return;
+  }
+
+  dashboardView.classList.toggle('hidden', page !== 'dashboard');
+  testingView.classList.toggle('hidden', page !== 'testing');
+}
+
 function handleRoute() {
   const hash = window.location.hash || '';
   const route = hash.replace('#/', '');
@@ -106,12 +130,25 @@ function handleRoute() {
       return;
     }
     showView('dashboard');
+    showDashboardPage('dashboard');
+    return;
+  }
+
+  if (route === 'testing') {
+    if (!isAuthenticated()) {
+      setHash(LOGIN_HASH);
+      showView('login');
+      return;
+    }
+    showView('dashboard');
+    showDashboardPage('testing');
     return;
   }
 
   if (isAuthenticated()) {
     setHash(DASHBOARD_HASH);
     showView('dashboard');
+    showDashboardPage('dashboard');
     return;
   }
 
@@ -123,6 +160,7 @@ function init() {
   bindLoginForm();
   bindComingSoon();
   bindLogout();
+  bindDashboardNavigation();
   handleRoute();
   window.addEventListener('hashchange', handleRoute);
 }

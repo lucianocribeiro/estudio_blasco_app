@@ -205,6 +205,83 @@ p {
   margin: 0;
 }
 
+.testing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.secondary-button {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.secondary-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.testing-form {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.testing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-field label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.testing-form input,
+.testing-form select,
+.testing-form textarea {
+  background: #0b0b0b;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-family);
+}
+
+.testing-form input:focus,
+.testing-form select:focus,
+.testing-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(94, 234, 170, 0.15);
+}
+
+.testing-form textarea {
+  resize: vertical;
+}
+
+.field-span-2 {
+  grid-column: 1 / -1;
+}
+
 /* Toast / Notification */
 .toast {
   position: fixed;
@@ -237,6 +314,45 @@ p {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 1024px) {
+  .action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .top-bar {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .content-body {
+    padding: 40px 20px;
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testing-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .testing-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .login-card {
