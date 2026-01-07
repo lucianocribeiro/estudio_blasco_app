@@ -1,4 +1,5 @@
 const SESSION_KEY = 'blasco_session';
+const TESTING_STORAGE_KEY = 'blasco_testing_entries';
 const LOGIN_HASH = '#/login';
 const DASHBOARD_HASH = '#/dashboard';
 const TESTING_HASH = '#/testing';
@@ -95,6 +96,150 @@ function bindLoginForm() {
   });
 }
 
+function createTestingItem({ name, link, status }, index) {
+  const item = document.createElement('div');
+  item.className = 'testing-item';
+
+  const header = document.createElement('div');
+  header.className = 'testing-item-header';
+
+  const title = document.createElement('div');
+  title.className = 'testing-item-title';
+  title.textContent = name;
+
+  const actions = document.createElement('div');
+  actions.className = 'testing-item-actions';
+
+  const badge = document.createElement('span');
+  badge.className = `status-badge status-${status}`;
+  badge.textContent =
+    status === 'pendiente'
+      ? 'Pendiente'
+      : status === 'en-progreso'
+        ? 'En progreso'
+        : 'Completada';
+
+  const deleteButton = document.createElement('button');
+  deleteButton.className = 'delete-button';
+  deleteButton.type = 'button';
+  deleteButton.dataset.action = 'delete-testing';
+  deleteButton.dataset.index = index;
+  deleteButton.textContent = 'Eliminar';
+
+  actions.appendChild(badge);
+  actions.appendChild(deleteButton);
+
+  header.appendChild(title);
+  header.appendChild(actions);
+
+  const linkEl = document.createElement('a');
+  linkEl.className = 'testing-item-link';
+  linkEl.href = link;
+  linkEl.target = '_blank';
+  linkEl.rel = 'noreferrer';
+  linkEl.textContent = link;
+
+  item.appendChild(header);
+  item.appendChild(linkEl);
+
+  return item;
+}
+
+function getTestingEntries() {
+  const stored = window.localStorage.getItem(TESTING_STORAGE_KEY);
+  if (!stored) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(stored);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function setTestingEntries(entries) {
+  window.localStorage.setItem(TESTING_STORAGE_KEY, JSON.stringify(entries));
+}
+
+function renderTestingEntries(entries) {
+  const list = document.getElementById('testingList');
+  if (!list) {
+    return;
+  }
+
+  list.innerHTML = '';
+
+  if (!entries.length) {
+    const emptyState = document.createElement('div');
+    emptyState.className = 'testing-empty';
+    emptyState.textContent = 'Todavía no hay pruebas cargadas.';
+    list.appendChild(emptyState);
+    return;
+  }
+
+  entries.forEach((entry, index) => {
+    list.appendChild(createTestingItem(entry, index));
+  });
+}
+
+function bindTestingForm() {
+  const form = document.getElementById('testingForm');
+
+  if (!form) {
+    return;
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById('testingName').value.trim();
+    const link = document.getElementById('testingLink').value.trim();
+    const status = document.getElementById('testingStatus').value;
+
+    if (!name || !link || !status) {
+      return;
+    }
+
+    const entries = getTestingEntries();
+    entries.push({ name, link, status });
+    setTestingEntries(entries);
+    renderTestingEntries(entries);
+
+    form.reset();
+  });
+}
+
+function bindTestingList() {
+  const list = document.getElementById('testingList');
+  if (!list) {
+    return;
+  }
+
+  list.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    const button = target.closest('[data-action="delete-testing"]');
+    if (!button || !(button instanceof HTMLElement)) {
+      return;
+    }
+
+    const index = Number(button.dataset.index);
+    if (Number.isNaN(index)) {
+      return;
+    }
+
+    const entries = getTestingEntries();
+    entries.splice(index, 1);
+    setTestingEntries(entries);
+    renderTestingEntries(entries);
+  });
+}
+
 function showView(view) {
   const loginSection = document.getElementById('loginSection');
   const dashboardSection = document.getElementById('dashboardSection');
@@ -161,6 +306,9 @@ function init() {
   bindComingSoon();
   bindLogout();
   bindDashboardNavigation();
+  bindTestingForm();
+  bindTestingList();
+  renderTestingEntries(getTestingEntries());
   handleRoute();
   window.addEventListener('hashchange', handleRoute);
 }

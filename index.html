@@ -162,12 +162,22 @@
                 Carga y seguimiento de pruebas internas.
               </p>
             </div>
-            <button class="secondary-button" id="backToDashboard" type="button">
-              Volver al panel
-            </button>
+            <div class="testing-header-actions">
+              <a
+                href="https://airtable.com/appsPZXdHvRJuFJMt/pagcIj4ORLtrH7BcB/form"
+                target="_blank"
+                rel="noreferrer"
+                class="secondary-button"
+              >
+                Reportar un problema
+              </a>
+              <button class="secondary-button" id="backToDashboard" type="button">
+                Volver al panel
+              </button>
+            </div>
           </div>
 
-          <form class="testing-form" autocomplete="off">
+          <form class="testing-form" id="testingForm" autocomplete="off">
             <div class="testing-grid">
               <div class="form-field">
                 <label for="testingName">Nombre de la prueba</label>
@@ -192,17 +202,15 @@
                   <option value="completada">Completada</option>
                 </select>
               </div>
-              <div class="form-field field-span-2">
-                <label for="testingComments">Comentarios</label>
-                <textarea
-                  id="testingComments"
-                  name="testingComments"
-                  placeholder="Notas adicionales sobre la prueba"
-                  rows="4"
-                ></textarea>
+              <div class="form-actions field-span-2">
+                <button class="primary-button" type="submit">Agregar prueba</button>
               </div>
             </div>
           </form>
+
+          <div class="testing-list" id="testingList">
+            <div class="testing-empty" id="testingEmpty">Todavía no hay pruebas cargadas.</div>
+          </div>
         </section>
       </div>
     </main>

@@ -213,6 +213,12 @@ p {
   margin-bottom: 30px;
 }
 
+.testing-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .secondary-button {
   background: transparent;
   border: 1px solid var(--border-color);
@@ -227,6 +233,23 @@ p {
 .secondary-button:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.primary-button {
+  background: var(--accent);
+  border: none;
+  color: #00160a;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(94, 234, 170, 0.18);
 }
 
 .testing-form {
@@ -280,6 +303,101 @@ p {
 
 .field-span-2 {
   grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.testing-list {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.testing-empty {
+  border: 1px dashed var(--border-color);
+  padding: 18px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.testing-item {
+  background: #0c0c0c;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.testing-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.testing-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.testing-item-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.testing-item-link {
+  color: var(--accent);
+  font-size: 13px;
+  word-break: break-word;
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  background: rgba(94, 234, 170, 0.12);
+  color: var(--accent);
+}
+
+.status-pendiente {
+  background: rgba(255, 209, 102, 0.16);
+  color: #ffd166;
+}
+
+.status-en-progreso {
+  background: rgba(94, 234, 170, 0.16);
+  color: #5eeaaa;
+}
+
+.status-completada {
+  background: rgba(98, 195, 255, 0.16);
+  color: #62c3ff;
+}
+
+.delete-button {
+  border: 1px solid rgba(255, 86, 86, 0.4);
+  color: #ff6b6b;
+  background: transparent;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-button:hover {
+  border-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.08);
 }
 
 /* Toast / Notification */
@@ -348,6 +466,12 @@ p {
   .testing-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .testing-header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .testing-grid {
