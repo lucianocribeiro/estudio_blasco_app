@@ -308,6 +308,7 @@ p {
 .form-actions {
   display: flex;
   justify-content: flex-end;
+  gap: 12px;
 }
 
 .testing-list {
@@ -333,6 +334,16 @@ p {
   gap: 12px;
 }
 
+.testing-item.is-completed {
+  opacity: 0.55;
+}
+
+.testing-item.is-completed .testing-item-title,
+.testing-item.is-completed .testing-item-link,
+.testing-item.is-completed .testing-item-comment {
+  color: var(--text-secondary);
+}
+
 .testing-item-header {
   display: flex;
   justify-content: space-between;
@@ -354,6 +365,13 @@ p {
 .testing-item-link {
   color: var(--accent);
   font-size: 13px;
+  word-break: break-word;
+}
+
+.testing-item-comment {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
   word-break: break-word;
 }
 
@@ -398,6 +416,13 @@ p {
 .delete-button:hover {
   border-color: #ff6b6b;
   background: rgba(255, 107, 107, 0.08);
+}
+
+.testing-edit-button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 /* Toast / Notification */

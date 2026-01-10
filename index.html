@@ -202,8 +202,18 @@
                   <option value="completada">Completada</option>
                 </select>
               </div>
+              <div class="form-field field-span-2">
+                <label for="testingComment">Comentarios</label>
+                <textarea
+                  id="testingComment"
+                  name="testingComment"
+                  rows="3"
+                  placeholder="Agrega notas o contexto para esta prueba"
+                ></textarea>
+              </div>
               <div class="form-actions field-span-2">
                 <button class="primary-button" type="submit">Agregar prueba</button>
+                <button class="secondary-button hidden" id="testingCancel" type="button">Cancelar edición</button>
               </div>
             </div>
           </form>

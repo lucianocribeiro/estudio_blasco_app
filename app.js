@@ -96,9 +96,12 @@ function bindLoginForm() {
   });
 }
 
-function createTestingItem({ name, link, status }, index) {
+function createTestingItem({ name, link, status, comment }, index) {
   const item = document.createElement('div');
   item.className = 'testing-item';
+  if (status === 'completada') {
+    item.classList.add('is-completed');
+  }
 
   const header = document.createElement('div');
   header.className = 'testing-item-header';
@@ -119,6 +122,13 @@ function createTestingItem({ name, link, status }, index) {
         ? 'En progreso'
         : 'Completada';
 
+  const editButton = document.createElement('button');
+  editButton.className = 'secondary-button testing-edit-button';
+  editButton.type = 'button';
+  editButton.dataset.action = 'edit-testing';
+  editButton.dataset.index = index;
+  editButton.textContent = 'Editar';
+
   const deleteButton = document.createElement('button');
   deleteButton.className = 'delete-button';
   deleteButton.type = 'button';
@@ -127,6 +137,7 @@ function createTestingItem({ name, link, status }, index) {
   deleteButton.textContent = 'Eliminar';
 
   actions.appendChild(badge);
+  actions.appendChild(editButton);
   actions.appendChild(deleteButton);
 
   header.appendChild(title);
@@ -142,7 +153,42 @@ function createTestingItem({ name, link, status }, index) {
   item.appendChild(header);
   item.appendChild(linkEl);
 
+  if (comment && comment.trim()) {
+    const commentEl = document.createElement('div');
+    commentEl.className = 'testing-item-comment';
+    commentEl.textContent = comment.trim();
+    item.appendChild(commentEl);
+  }
+
   return item;
+}
+
+function setTestingFormEditing(form, index) {
+  form.dataset.editIndex = String(index);
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (submitButton) {
+    submitButton.textContent = 'Guardar cambios';
+  }
+
+  const cancelButton = document.getElementById('testingCancel');
+  if (cancelButton) {
+    cancelButton.classList.remove('hidden');
+  }
+}
+
+function clearTestingFormEditing(form) {
+  delete form.dataset.editIndex;
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (submitButton) {
+    submitButton.textContent = 'Agregar prueba';
+  }
+
+  const cancelButton = document.getElementById('testingCancel');
+  if (cancelButton) {
+    cancelButton.classList.add('hidden');
+  }
 }
 
 function getTestingEntries() {
@@ -191,23 +237,40 @@ function bindTestingForm() {
     return;
   }
 
+  const cancelButton = document.getElementById('testingCancel');
+  if (cancelButton) {
+    cancelButton.addEventListener('click', () => {
+      form.reset();
+      clearTestingFormEditing(form);
+    });
+  }
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const name = document.getElementById('testingName').value.trim();
     const link = document.getElementById('testingLink').value.trim();
     const status = document.getElementById('testingStatus').value;
+    const comment = document.getElementById('testingComment').value.trim();
 
     if (!name || !link || !status) {
       return;
     }
 
     const entries = getTestingEntries();
-    entries.push({ name, link, status });
+    const editIndex = Number(form.dataset.editIndex);
+    const nextEntry = { name, link, status, comment };
+
+    if (!Number.isNaN(editIndex)) {
+      entries[editIndex] = nextEntry;
+    } else {
+      entries.push(nextEntry);
+    }
     setTestingEntries(entries);
     renderTestingEntries(entries);
 
     form.reset();
+    clearTestingFormEditing(form);
   });
 }
 
@@ -217,18 +280,44 @@ function bindTestingList() {
     return;
   }
 
+  const form = document.getElementById('testingForm');
+
   list.addEventListener('click', (event) => {
     const target = event.target;
     if (!(target instanceof HTMLElement)) {
       return;
     }
 
-    const button = target.closest('[data-action="delete-testing"]');
-    if (!button || !(button instanceof HTMLElement)) {
+    const editButton = target.closest('[data-action="edit-testing"]');
+    if (editButton && editButton instanceof HTMLElement) {
+      const index = Number(editButton.dataset.index);
+      if (Number.isNaN(index)) {
+        return;
+      }
+
+      const entries = getTestingEntries();
+      const entry = entries[index];
+      if (!entry) {
+        return;
+      }
+
+      document.getElementById('testingName').value = entry.name || '';
+      document.getElementById('testingLink').value = entry.link || '';
+      document.getElementById('testingStatus').value = entry.status || '';
+      document.getElementById('testingComment').value = entry.comment || '';
+
+      if (form) {
+        setTestingFormEditing(form, index);
+      }
       return;
     }
 
-    const index = Number(button.dataset.index);
+    const deleteButton = target.closest('[data-action="delete-testing"]');
+    if (!deleteButton || !(deleteButton instanceof HTMLElement)) {
+      return;
+    }
+
+    const index = Number(deleteButton.dataset.index);
     if (Number.isNaN(index)) {
       return;
     }
@@ -237,6 +326,18 @@ function bindTestingList() {
     entries.splice(index, 1);
     setTestingEntries(entries);
     renderTestingEntries(entries);
+
+    if (form && form.dataset.editIndex !== undefined) {
+      const editIndex = Number(form.dataset.editIndex);
+      if (!Number.isNaN(editIndex)) {
+        if (editIndex === index) {
+          form.reset();
+          clearTestingFormEditing(form);
+        } else if (editIndex > index) {
+          form.dataset.editIndex = String(editIndex - 1);
+        }
+      }
+    }
   });
 }
 
