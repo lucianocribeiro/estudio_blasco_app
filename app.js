@@ -1,5 +1,14 @@
 const SESSION_KEY = 'blasco_session';
 const TESTING_STORAGE_KEY = 'blasco_testing_entries';
+const TESTING_READ_ONLY = true;
+const DEFAULT_TESTING_ENTRIES = [
+  {
+    name: 'Cruces Mis Retenciones & Mis Comprobantes Test',
+    link: 'https://lucianocribeiro.app.n8n.cloud/form/5298d756-4990-48c5-b218-74a20dfc5c9c',
+    status: 'en-progreso',
+    comment: 'Ajustes: 11, 12 y 16.',
+  },
+];
 const LOGIN_HASH = '#/login';
 const DASHBOARD_HASH = '#/dashboard';
 const TESTING_HASH = '#/testing';
@@ -122,23 +131,25 @@ function createTestingItem({ name, link, status, comment }, index) {
         ? 'En progreso'
         : 'Completada';
 
-  const editButton = document.createElement('button');
-  editButton.className = 'secondary-button testing-edit-button';
-  editButton.type = 'button';
-  editButton.dataset.action = 'edit-testing';
-  editButton.dataset.index = index;
-  editButton.textContent = 'Editar';
-
-  const deleteButton = document.createElement('button');
-  deleteButton.className = 'delete-button';
-  deleteButton.type = 'button';
-  deleteButton.dataset.action = 'delete-testing';
-  deleteButton.dataset.index = index;
-  deleteButton.textContent = 'Eliminar';
-
   actions.appendChild(badge);
-  actions.appendChild(editButton);
-  actions.appendChild(deleteButton);
+  if (!TESTING_READ_ONLY) {
+    const editButton = document.createElement('button');
+    editButton.className = 'secondary-button testing-edit-button';
+    editButton.type = 'button';
+    editButton.dataset.action = 'edit-testing';
+    editButton.dataset.index = index;
+    editButton.textContent = 'Editar';
+
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'delete-button';
+    deleteButton.type = 'button';
+    deleteButton.dataset.action = 'delete-testing';
+    deleteButton.dataset.index = index;
+    deleteButton.textContent = 'Eliminar';
+
+    actions.appendChild(editButton);
+    actions.appendChild(deleteButton);
+  }
 
   header.appendChild(title);
   header.appendChild(actions);
@@ -192,6 +203,9 @@ function clearTestingFormEditing(form) {
 }
 
 function getTestingEntries() {
+  if (TESTING_READ_ONLY) {
+    return DEFAULT_TESTING_ENTRIES.slice();
+  }
   const stored = window.localStorage.getItem(TESTING_STORAGE_KEY);
   if (!stored) {
     return [];
@@ -206,6 +220,9 @@ function getTestingEntries() {
 }
 
 function setTestingEntries(entries) {
+  if (TESTING_READ_ONLY) {
+    return;
+  }
   window.localStorage.setItem(TESTING_STORAGE_KEY, JSON.stringify(entries));
 }
 
@@ -231,6 +248,13 @@ function renderTestingEntries(entries) {
 }
 
 function bindTestingForm() {
+  if (TESTING_READ_ONLY) {
+    const form = document.getElementById('testingForm');
+    if (form) {
+      form.classList.add('hidden');
+    }
+    return;
+  }
   const form = document.getElementById('testingForm');
 
   if (!form) {
@@ -275,6 +299,9 @@ function bindTestingForm() {
 }
 
 function bindTestingList() {
+  if (TESTING_READ_ONLY) {
+    return;
+  }
   const list = document.getElementById('testingList');
   if (!list) {
     return;
