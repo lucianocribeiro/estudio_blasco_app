@@ -11,6 +11,7 @@ const DEFAULT_TESTING_ENTRIES = [
 ];
 const LOGIN_HASH = '#/login';
 const DASHBOARD_HASH = '#/dashboard';
+const USERS_HASH = '#/users';
 const TESTING_HASH = '#/testing';
 
 const CREDENTIALS = {
@@ -18,8 +19,155 @@ const CREDENTIALS = {
   password: '1234Blasco#',
 };
 
+const ACTIVE_USER_KEY = 'blasco_active_user';
+const USERS = [
+  {
+    id: 'usuario-1',
+    name: 'AGUSTIN',
+    links: {
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+    },
+  },
+  {
+    id: 'usuario-2',
+    name: 'RUBEN',
+    links: {
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+    },
+  },
+  {
+    id: 'usuario-3',
+    name: 'CANDELARIA',
+    links: {
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+    },
+  },
+  {
+    id: 'usuario-4',
+    name: 'IVANNA',
+    links: {
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+    },
+  },
+  {
+    id: 'usuario-5',
+    name: 'JULIETA',
+    links: {
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+    },
+  },
+];
+
 function isAuthenticated() {
   return sessionStorage.getItem(SESSION_KEY) === 'active';
+}
+
+function getActiveUserId() {
+  return sessionStorage.getItem(ACTIVE_USER_KEY);
+}
+
+function setActiveUserId(userId) {
+  sessionStorage.setItem(ACTIVE_USER_KEY, userId);
+}
+
+function clearActiveUser() {
+  sessionStorage.removeItem(ACTIVE_USER_KEY);
+}
+
+function getActiveUser() {
+  const userId = getActiveUserId();
+  if (!userId) {
+    return null;
+  }
+  return USERS.find((user) => user.id === userId) || null;
+}
+
+function applyUserLinks(user) {
+  if (!user) {
+    return;
+  }
+  document.querySelectorAll('[data-link-key]').forEach((link) => {
+    const key = link.dataset.linkKey;
+    if (!key) {
+      return;
+    }
+    const href = user.links[key];
+    if (href) {
+      link.href = href;
+    }
+  });
+}
+
+function updateActiveUserUI() {
+  const user = getActiveUser();
+  const label = document.getElementById('activeUserName');
+  const dashboardName = document.getElementById('dashboardUserName');
+  const userName = user ? user.name : 'Sin seleccionar';
+
+  if (label) {
+    label.textContent = userName;
+  }
+  if (dashboardName) {
+    dashboardName.textContent = userName;
+  }
+  applyUserLinks(user);
+}
+
+function renderUserSelection() {
+  const grid = document.getElementById('userSelectGrid');
+  if (!grid) {
+    return;
+  }
+  grid.innerHTML = '';
+
+  USERS.forEach((user) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'user-select-button';
+    button.dataset.userId = user.id;
+    button.textContent = user.name;
+    grid.appendChild(button);
+  });
 }
 
 function setHash(hash) {
@@ -60,6 +208,7 @@ function bindLogout() {
 
   logoutButton.addEventListener('click', () => {
     sessionStorage.removeItem(SESSION_KEY);
+    clearActiveUser();
     setHash(LOGIN_HASH);
   });
 }
@@ -71,6 +220,30 @@ function bindDashboardNavigation() {
   }
 
   backButton.addEventListener('click', () => {
+    setHash(DASHBOARD_HASH);
+  });
+}
+
+function bindUserSelection() {
+  const grid = document.getElementById('userSelectGrid');
+  if (!grid) {
+    return;
+  }
+
+  grid.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+    const button = target.closest('.user-select-button');
+    if (!button || !(button instanceof HTMLElement)) {
+      return;
+    }
+    const userId = button.dataset.userId;
+    if (!userId) {
+      return;
+    }
+    setActiveUserId(userId);
     setHash(DASHBOARD_HASH);
   });
 }
@@ -94,7 +267,7 @@ function bindLoginForm() {
       if (errorEl) {
         errorEl.classList.remove('show');
       }
-      setHash(DASHBOARD_HASH);
+      setHash(USERS_HASH);
       return;
     }
 
@@ -382,13 +555,15 @@ function showView(view) {
 
 function showDashboardPage(page) {
   const dashboardView = document.getElementById('dashboardView');
+  const userSelectView = document.getElementById('userSelectView');
   const testingView = document.getElementById('testingView');
 
-  if (!dashboardView || !testingView) {
+  if (!dashboardView || !testingView || !userSelectView) {
     return;
   }
 
   dashboardView.classList.toggle('hidden', page !== 'dashboard');
+  userSelectView.classList.toggle('hidden', page !== 'users');
   testingView.classList.toggle('hidden', page !== 'testing');
 }
 
@@ -396,14 +571,32 @@ function handleRoute() {
   const hash = window.location.hash || '';
   const route = hash.replace('#/', '');
 
-  if (route === 'dashboard') {
+  if (route === 'users') {
     if (!isAuthenticated()) {
       setHash(LOGIN_HASH);
       showView('login');
       return;
     }
     showView('dashboard');
+    showDashboardPage('users');
+    return;
+  }
+
+  if (route === 'dashboard') {
+    if (!isAuthenticated()) {
+      setHash(LOGIN_HASH);
+      showView('login');
+      return;
+    }
+    if (!getActiveUser()) {
+      setHash(USERS_HASH);
+      showView('dashboard');
+      showDashboardPage('users');
+      return;
+    }
+    showView('dashboard');
     showDashboardPage('dashboard');
+    updateActiveUserUI();
     return;
   }
 
@@ -413,15 +606,27 @@ function handleRoute() {
       showView('login');
       return;
     }
+    if (!getActiveUser()) {
+      setHash(USERS_HASH);
+      showView('dashboard');
+      showDashboardPage('users');
+      return;
+    }
     showView('dashboard');
     showDashboardPage('testing');
+    updateActiveUserUI();
     return;
   }
 
   if (isAuthenticated()) {
-    setHash(DASHBOARD_HASH);
+    if (getActiveUser()) {
+      setHash(DASHBOARD_HASH);
+    } else {
+      setHash(USERS_HASH);
+    }
     showView('dashboard');
-    showDashboardPage('dashboard');
+    showDashboardPage(getActiveUser() ? 'dashboard' : 'users');
+    updateActiveUserUI();
     return;
   }
 
@@ -434,6 +639,8 @@ function init() {
   bindComingSoon();
   bindLogout();
   bindDashboardNavigation();
+  renderUserSelection();
+  bindUserSelection();
   bindTestingForm();
   bindTestingList();
   renderTestingEntries(getTestingEntries());

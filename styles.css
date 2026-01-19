@@ -125,6 +125,22 @@ a {
   height: 74px;
 }
 
+.active-user-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.active-user-label span {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .logout-button {
   background: transparent;
   border: 1px solid var(--border-color);
@@ -148,6 +164,34 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+}
+
+.user-select-header {
+  margin-bottom: 30px;
+}
+
+.user-select-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.user-select-button {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 22px 18px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.user-select-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .action-grid {
@@ -463,6 +507,10 @@ p {
   .action-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .user-select-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
@@ -485,6 +533,10 @@ p {
   }
 
   .action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-select-grid {
     grid-template-columns: 1fr;
   }
 
