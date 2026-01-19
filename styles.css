@@ -157,6 +157,22 @@ a {
   color: var(--accent);
 }
 
+.switch-user-button {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.switch-user-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .content-body {
   padding: 60px 40px;
   flex: 1;
@@ -192,6 +208,14 @@ a {
   border-color: var(--accent);
   color: var(--accent);
   transform: translateY(-2px);
+}
+
+.app-container.user-select-mode .sidebar {
+  display: none;
+}
+
+.app-container.user-select-mode .main-content {
+  width: 100%;
 }
 
 .action-grid {

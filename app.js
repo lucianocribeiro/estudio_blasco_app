@@ -224,6 +224,17 @@ function bindDashboardNavigation() {
   });
 }
 
+function bindUserSwitch() {
+  const switchButton = document.getElementById('switchUserButton');
+  if (!switchButton) {
+    return;
+  }
+
+  switchButton.addEventListener('click', () => {
+    setHash(USERS_HASH);
+  });
+}
+
 function bindUserSelection() {
   const grid = document.getElementById('userSelectGrid');
   if (!grid) {
@@ -557,14 +568,20 @@ function showDashboardPage(page) {
   const dashboardView = document.getElementById('dashboardView');
   const userSelectView = document.getElementById('userSelectView');
   const testingView = document.getElementById('testingView');
+  const dashboardSection = document.getElementById('dashboardSection');
+  const switchButton = document.getElementById('switchUserButton');
 
-  if (!dashboardView || !testingView || !userSelectView) {
+  if (!dashboardView || !testingView || !userSelectView || !dashboardSection) {
     return;
   }
 
   dashboardView.classList.toggle('hidden', page !== 'dashboard');
   userSelectView.classList.toggle('hidden', page !== 'users');
   testingView.classList.toggle('hidden', page !== 'testing');
+  dashboardSection.classList.toggle('user-select-mode', page === 'users');
+  if (switchButton) {
+    switchButton.classList.toggle('hidden', page === 'users');
+  }
 }
 
 function handleRoute() {
@@ -639,6 +656,7 @@ function init() {
   bindComingSoon();
   bindLogout();
   bindDashboardNavigation();
+  bindUserSwitch();
   renderUserSelection();
   bindUserSelection();
   bindTestingForm();
