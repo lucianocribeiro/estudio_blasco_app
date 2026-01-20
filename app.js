@@ -25,60 +25,60 @@ const USERS = [
     id: 'usuario-1',
     name: 'AGUSTIN',
     links: {
-      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
-      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
-      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
-      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
-      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
-      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
-      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/5e1f9b08-e8f0-4afb-a5ab-a048606e099d',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/20a290e9-3eea-4d43-a10f-5d5955f242f4',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/435462fa-9fbe-42c3-8d3d-69c5fc6dfbbe',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1KxsFt-aicYASBpHf5Rr-me309pqzXj7s',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/0af6203f-1a56-479e-a6ee-4fc0e157183f',
+      'iva-papeles': 'https://drive.google.com/drive/folders/13x7M_O8E1rWMEdO3huCu6n1n3JQnkh1q',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/e4395430-b0c0-466a-8c1d-6c2ac9f251af',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/435462fa-9fbe-42c3-8d3d-69c5fc6dfbbe',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/0af6203f-1a56-479e-a6ee-4fc0e157183f',
     },
   },
   {
     id: 'usuario-2',
     name: 'RUBEN',
     links: {
-      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
-      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
-      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
-      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
-      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
-      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
-      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/1b9a51a5-ef37-4bfa-b6c8-139e336642b9',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/3628dc2a-8c6f-4a6c-bdb2-754f998e57e5',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c8ddae2b-6070-45d2-ada7-57b515c97f84',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1Cgj_GBWANfr2vhLP77XXzwFCLnJZ4rtZ',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/1c792458-f2b5-4554-a121-8646d5b2b83b',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1R1HTFTh_OeKAwf6IIkW4a48Tb3WtcfzY',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/df666eec-7fbf-4242-9729-b691547b4fdb',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c8ddae2b-6070-45d2-ada7-57b515c97f84',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/1c792458-f2b5-4554-a121-8646d5b2b83b',
     },
   },
   {
     id: 'usuario-3',
     name: 'CANDELARIA',
     links: {
-      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
-      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
-      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
-      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
-      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
-      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
-      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/7d7e24cf-9332-4f55-bb31-e2b28260a8a3',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/79869a2d-4278-4dd1-8575-046ce023925e',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/80b1af77-d3bf-4654-bae2-72bc7f45eb05',
+      'excel-cruces': 'https://drive.google.com/drive/folders/10SiYv45_wgHAj06Uo8Bbud-4hSRbnvht',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/93862009-320c-4196-b65b-6bdb426e0a73',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1KgpRb4Fq2wVJ3nX3b29LY1ISFt4szirv',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/e8a2735b-0f9c-478d-b788-7708aba45324',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/80b1af77-d3bf-4654-bae2-72bc7f45eb05',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/93862009-320c-4196-b65b-6bdb426e0a73',
     },
   },
   {
     id: 'usuario-4',
     name: 'IVANNA',
     links: {
-      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
-      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
-      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
-      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
-      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
-      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
-      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
+      'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/bf8a8643-28bb-4417-97a9-90aab3411f4b',
+      'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/e96dbd70-0b0b-443e-bbc4-463f867e33b6',
+      'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/fdbc0bb3-fabe-449d-9ece-643a5e2df1aa',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1CNgfOzUejj_BTSRz_82ztr0qPtQGC9pu',
+      'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/1b3cbd54-1488-4fb4-b67e-c97fe539e45e',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1cbheRuIbiyG2c5VyA4dtPcKzNKSCLSKR',
+      'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/2422e262-59fb-44f0-b079-7860603c5877',
+      'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/fdbc0bb3-fabe-449d-9ece-643a5e2df1aa',
+      'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/1b3cbd54-1488-4fb4-b67e-c97fe539e45e',
     },
   },
   {
@@ -88,9 +88,9 @@ const USERS = [
       'mis-retenciones': 'https://lucianocribeiro.app.n8n.cloud/form/ee70b638-ce79-4381-a7ac-2f1f0f605118',
       'mis-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/da244389-3b70-4d4b-9883-10cde735ae0d',
       'mis-retenciones-comprobantes': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
-      'excel-cruces': 'https://drive.google.com/drive/folders/1lpjZETXnhJ59zOTMKyOX7qUl9UolSoP5',
+      'excel-cruces': 'https://drive.google.com/drive/folders/1KlTHbv4m2nzCxGeeFwlPdQxcgxGGLjrh',
       'iva-liquidacion': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
-      'iva-papeles': 'https://drive.google.com/drive/folders/1_yz3hKyMrRshoL77fOdDFdAGbphcjHQl',
+      'iva-papeles': 'https://drive.google.com/drive/folders/1FcUWMMDYbJeKIfk18d-FOvbGX1yT3ET9',
       'iva-validacion': 'https://lucianocribeiro.app.n8n.cloud/form/b17c0705-bbbe-4afa-8b46-4663cc9d1c13',
       'action-cruces': 'https://lucianocribeiro.app.n8n.cloud/form/c96f19ec-5ab8-495d-a6ba-4cd535ad071b',
       'action-iva': 'https://lucianocribeiro.app.n8n.cloud/form/61baf8d4-fe6a-4c2f-b85d-ec2c2ef5658e',
@@ -135,6 +135,26 @@ function applyUserLinks(user) {
     if (href) {
       link.href = href;
     }
+  });
+}
+
+function validateUserLinks() {
+  const requiredKeys = new Set(
+    Array.from(document.querySelectorAll('[data-link-key]'))
+      .map((element) => element.dataset.linkKey)
+      .filter(Boolean),
+  );
+
+  if (!requiredKeys.size) {
+    return;
+  }
+
+  USERS.forEach((user) => {
+    requiredKeys.forEach((key) => {
+      if (!user.links[key]) {
+        console.warn(`Missing link key "${key}" for ${user.name}.`);
+      }
+    });
   });
 }
 
@@ -662,6 +682,7 @@ function init() {
   bindTestingForm();
   bindTestingList();
   renderTestingEntries(getTestingEntries());
+  validateUserLinks();
   handleRoute();
   window.addEventListener('hashchange', handleRoute);
 }
