@@ -292,6 +292,16 @@ function bindLoginForm() {
 
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value;
+    const humanCheck = document.getElementById('humanCheck');
+    const isHuman = humanCheck ? humanCheck.checked : true;
+
+    if (!isHuman) {
+      if (errorEl) {
+        errorEl.classList.add('show');
+        errorEl.textContent = 'Por favor confirma que no eres un bot.';
+      }
+      return;
+    }
 
     if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
       sessionStorage.setItem(SESSION_KEY, 'active');

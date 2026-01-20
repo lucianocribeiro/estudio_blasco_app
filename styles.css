@@ -629,6 +629,31 @@ p {
   font-size: 14px;
 }
 
+.login-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.login-check input {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  accent-color: var(--accent);
+}
+
+.login-check label {
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-primary);
+}
+
 .login-card button {
   background: var(--accent);
   border: none;
