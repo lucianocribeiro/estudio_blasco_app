@@ -5,7 +5,7 @@ const DEFAULT_TESTING_ENTRIES = [
   {
     name: 'Cruces Mis Retenciones & Mis Comprobantes Test',
     link: 'https://lucianocribeiro.app.n8n.cloud/form/5298d756-4990-48c5-b218-74a20dfc5c9c',
-    status: 'en-progreso',
+    status: 'completada',
     comment: 'Ajustes: 11, 12 y 16.',
   },
 ];
