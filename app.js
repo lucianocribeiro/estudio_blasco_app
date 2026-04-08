@@ -373,41 +373,6 @@ function setupSidebarSubmenuToggles() {
     title.setAttribute('tabindex', '0');
     title.setAttribute('aria-expanded', 'true');
     bindTriggerEvents(title, groupContent);
-
-    const labels = Array.from(groupContent.querySelectorAll('.nav-item-label'));
-    labels.forEach((labelNode) => {
-      if (!(labelNode instanceof HTMLElement)) {
-        return;
-      }
-
-      const subMenuContent = document.createElement('div');
-      subMenuContent.className = 'nav-submenu-content';
-
-      let current = labelNode.nextSibling;
-      while (current) {
-        const next = current.nextSibling;
-        if (
-          current instanceof HTMLElement &&
-          current.classList.contains('nav-item-label')
-        ) {
-          break;
-        }
-        if (
-          current instanceof HTMLElement &&
-          current.classList.contains('nav-sub-item')
-        ) {
-          subMenuContent.appendChild(current);
-        }
-        current = next;
-      }
-
-      labelNode.insertAdjacentElement('afterend', subMenuContent);
-      labelNode.classList.add('is-toggle');
-      labelNode.setAttribute('role', 'button');
-      labelNode.setAttribute('tabindex', '0');
-      labelNode.setAttribute('aria-expanded', 'true');
-      bindTriggerEvents(labelNode, subMenuContent);
-    });
   });
 }
 
