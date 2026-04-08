@@ -329,6 +329,88 @@ function bindUserSelection() {
   });
 }
 
+function toggleSection(trigger, content) {
+  const isCollapsed = trigger.classList.toggle('is-collapsed');
+  content.classList.toggle('collapsed', isCollapsed);
+  trigger.setAttribute('aria-expanded', String(!isCollapsed));
+}
+
+function bindTriggerEvents(trigger, content) {
+  trigger.addEventListener('click', () => {
+    toggleSection(trigger, content);
+  });
+
+  trigger.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+    event.preventDefault();
+    toggleSection(trigger, content);
+  });
+}
+
+function setupSidebarSubmenuToggles() {
+  document.querySelectorAll('.nav-group').forEach((group) => {
+    if (!(group instanceof HTMLElement)) {
+      return;
+    }
+
+    const title = group.querySelector('.nav-title');
+    if (!(title instanceof HTMLElement)) {
+      return;
+    }
+
+    const groupContent = document.createElement('div');
+    groupContent.className = 'nav-group-content';
+
+    while (title.nextSibling) {
+      groupContent.appendChild(title.nextSibling);
+    }
+    group.appendChild(groupContent);
+
+    title.classList.add('is-toggle');
+    title.setAttribute('role', 'button');
+    title.setAttribute('tabindex', '0');
+    title.setAttribute('aria-expanded', 'true');
+    bindTriggerEvents(title, groupContent);
+
+    const labels = Array.from(groupContent.querySelectorAll('.nav-item-label'));
+    labels.forEach((labelNode) => {
+      if (!(labelNode instanceof HTMLElement)) {
+        return;
+      }
+
+      const subMenuContent = document.createElement('div');
+      subMenuContent.className = 'nav-submenu-content';
+
+      let current = labelNode.nextSibling;
+      while (current) {
+        const next = current.nextSibling;
+        if (
+          current instanceof HTMLElement &&
+          current.classList.contains('nav-item-label')
+        ) {
+          break;
+        }
+        if (
+          current instanceof HTMLElement &&
+          current.classList.contains('nav-sub-item')
+        ) {
+          subMenuContent.appendChild(current);
+        }
+        current = next;
+      }
+
+      labelNode.insertAdjacentElement('afterend', subMenuContent);
+      labelNode.classList.add('is-toggle');
+      labelNode.setAttribute('role', 'button');
+      labelNode.setAttribute('tabindex', '0');
+      labelNode.setAttribute('aria-expanded', 'true');
+      bindTriggerEvents(labelNode, subMenuContent);
+    });
+  });
+}
+
 function bindLoginForm() {
   const loginForm = document.getElementById('loginForm');
   if (!loginForm) {
@@ -732,6 +814,7 @@ function handleRoute() {
 }
 
 function init() {
+  setupSidebarSubmenuToggles();
   bindLoginForm();
   bindComingSoon();
   bindLogout();
