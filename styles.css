@@ -93,6 +93,13 @@ a {
   color: white;
 }
 
+.nav-item-label,
+.nav-item-label:hover {
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: default;
+}
+
 .nav-sub-item {
   padding: 8px 12px 8px 30px;
   font-size: 13px;
@@ -116,13 +123,14 @@ a {
   border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 20px;
   padding: 0 40px;
 }
 
 .top-bar img {
   height: 74px;
+  margin-right: auto;
 }
 
 .active-user-label {
